@@ -1,0 +1,10 @@
+/home/dimitar/dotnet/console1/bin/Debug/netcoreapp2.0/console1.deps.json
+/home/dimitar/dotnet/console1/bin/Debug/netcoreapp2.0/console1.runtimeconfig.json
+/home/dimitar/dotnet/console1/bin/Debug/netcoreapp2.0/console1.runtimeconfig.dev.json
+/home/dimitar/dotnet/console1/bin/Debug/netcoreapp2.0/console1.dll
+/home/dimitar/dotnet/console1/bin/Debug/netcoreapp2.0/console1.pdb
+/home/dimitar/dotnet/console1/obj/Debug/netcoreapp2.0/console1.csproj.CoreCompileInputs.cache
+/home/dimitar/dotnet/console1/obj/Debug/netcoreapp2.0/console1.AssemblyInfoInputs.cache
+/home/dimitar/dotnet/console1/obj/Debug/netcoreapp2.0/console1.AssemblyInfo.cs
+/home/dimitar/dotnet/console1/obj/Debug/netcoreapp2.0/console1.dll
+/home/dimitar/dotnet/console1/obj/Debug/netcoreapp2.0/console1.pdb
