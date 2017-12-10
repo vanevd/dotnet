@@ -9,6 +9,7 @@ namespace Console1
             string line;
             int a, b;
 
+            Console.WriteLine("Test 2");
             while (true) {
                 Console.WriteLine("Please enter First Value: ");   
                 line = Console.ReadLine();

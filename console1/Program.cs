@@ -15,10 +15,13 @@ namespace Console1
                     break;
                 }    
                 if (line == "1") {
-                    Test1.Run();
+                    Test1.Run(); 
                 }
                 if (line == "2") {
                     Test2.Run();
+                }
+                if (line == "3") {
+                    Test3.Run();
                 }
             }
             

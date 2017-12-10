@@ -8,6 +8,7 @@ namespace Console1
         {
             string line;
 
+            Console.WriteLine("Test 1");
             while (true) {
                 Console.WriteLine("Please enter Name: ");   
                 line = Console.ReadLine();
