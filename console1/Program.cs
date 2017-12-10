@@ -1,27 +1,28 @@
 ﻿using System;
 
-namespace console1
+namespace Console1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int p,month;
-            int[] a1 = new int[5];
-            string[] a2 = new string[5];
+            string line;
 
-            double width, height;
-
-            width = 10.256;
-            height = 20.789;
-
-            month = 7;
-
-            Console.WriteLine("height = {1:n}, width = {0:f2}, month = {2:d2}", width, height, month);
+            while (true) {
+                Console.WriteLine("Please enter Test Number: ");   
+                line = Console.ReadLine();
+                if (line.ToLower() == "end") {
+                    break;
+                }    
+                if (line == "1") {
+                    Test1.Run();
+                }
+                if (line == "2") {
+                    Test2.Run();
+                }
+            }
             
-            p = 10;
 
-            Console.WriteLine(p);
         }
     }
 }
