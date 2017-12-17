@@ -9,12 +9,14 @@ namespace Console1
             string line;
             string[] list;
             string[] list1;
+            string[] items;
             int init_size = 5;
             int count=0;
             int i;
             int size;
             int key;
             int ins=0;
+            string resize = "manual";
 
             list = new string[init_size];
             Console.WriteLine("Test 3");
@@ -44,26 +46,40 @@ namespace Console1
                 }                
                 if (line.Length > 4) {
                     if (line.Substring(0,4).ToLower() == "add ") {
-                        if (count<init_size) {
-                            if (ins==0) {
-                                list[count] = line.Substring(4,line.Length-4);
+                        items = line.Substring(4,line.Length-4).Split(',');
+                        if (count+items.Length-1 >= init_size) {
+                            if (resize == "manual") {
+                                Console.WriteLine("List full");
+                                continue;
+                            }    
+                            if (resize == "auto") {
+                                //resize;
                             }
-                            if (ins>0) {
-                                for (i=count; i>=ins; i--) {
-                                    list[i] = list[i-1];
-                                }  
-                                list[ins-1] = line.Substring(4,line.Length-4);
-                            }
-                            count++;
-                        } else {
-                            Console.WriteLine("List full");
                         }
+                        if (ins==0) {
+                            for (i=0; i<items.Length; i++) {
+                                list[count+i] = items[i];
+                            }    
+                        }
+                        if (ins>0) {
+                            for (i=count; i>=ins; i--) {
+                                list[i+items.Length-1] = list[i-1];
+                            }  
+                            for (i=0; i<items.Length; i++) {
+                                list[ins-1+i] = items[i];
+                            }    
+                        }
+                        count = count + items.Length;
+                        ins = 0;
                         continue;
                     }
                     if (line.Substring(0,4).ToLower() == "del ") {
-                        key = Int32.Parse(line.Substring(4,line.Length-4));
+                        if (!Int32.TryParse(line.Substring(4,line.Length-4), out key)) {
+                            Console.WriteLine("Please enter integer value.");
+                            continue;
+                        }
                         if ((key < 1)||(key > count)) {
-                            Console.WriteLine("Invalid key.");
+                            Console.WriteLine("Please enter number between 1 and {0}.", count);
                             continue;
                         }
                         for (i=key-1; i<=count-2; i++) {
@@ -73,18 +89,24 @@ namespace Console1
                         continue;
                     }    
                     if (line.Substring(0,4).ToLower() == "ins ") {
-                        key = Int32.Parse(line.Substring(4,line.Length-4));
+                        if (!Int32.TryParse(line.Substring(4,line.Length-4), out key)) {
+                            Console.WriteLine("Please enter integer value.");
+                            continue;
+                        }
                         if ((key < 0)||(key > count)) {
-                            Console.WriteLine("Invalid key.");
+                            Console.WriteLine("Please enter number between 0 and {0}.", count);
                             continue;
                         }      
                         ins=key;  
                         continue;                
                     }
                     if (line.Substring(0,5).ToLower() == "size ") {
-                        size = Int32.Parse(line.Substring(5,line.Length-5));
+                        if (!Int32.TryParse(line.Substring(5,line.Length-5), out size)) {
+                            Console.WriteLine("Please enter integer value.");
+                            continue;
+                        }
                         if (size <= count) {
-                            Console.WriteLine("Please enter greater size.");
+                            Console.WriteLine("Please enter number greater than {0}.", count);
                             continue;
                         }
                         list1 = new string[size];
