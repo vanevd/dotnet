@@ -14,6 +14,7 @@ namespace Console1
             int i;
             int size;
             int key;
+            int ins=0;
 
             list = new string[init_size];
             Console.WriteLine("Test 3");
@@ -37,11 +38,23 @@ namespace Console1
                     Console.WriteLine("Size: {0}", init_size);
                     continue;
                 }
+                if (line.ToLower() == "ins") {
+                    Console.WriteLine("Ins: {0}", ins);
+                    continue;
+                }                
                 if (line.Length > 4) {
                     if (line.Substring(0,4).ToLower() == "add ") {
                         if (count<init_size) {
-                        list[count] = line.Substring(4,line.Length-4);
-                        count++;
+                            if (ins==0) {
+                                list[count] = line.Substring(4,line.Length-4);
+                            }
+                            if (ins>0) {
+                                for (i=count; i>=ins; i--) {
+                                    list[i] = list[i-1];
+                                }  
+                                list[ins-1] = line.Substring(4,line.Length-4);
+                            }
+                            count++;
                         } else {
                             Console.WriteLine("List full");
                         }
@@ -59,6 +72,15 @@ namespace Console1
                         count--;
                         continue;
                     }    
+                    if (line.Substring(0,4).ToLower() == "ins ") {
+                        key = Int32.Parse(line.Substring(4,line.Length-4));
+                        if ((key < 0)||(key > count)) {
+                            Console.WriteLine("Invalid key.");
+                            continue;
+                        }      
+                        ins=key;  
+                        continue;                
+                    }
                     if (line.Substring(0,5).ToLower() == "size ") {
                         size = Int32.Parse(line.Substring(5,line.Length-5));
                         if (size <= count) {
