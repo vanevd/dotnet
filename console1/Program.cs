@@ -23,6 +23,9 @@ namespace Console1
                 if (line == "3") {
                     Test3.Run();
                 }
+                if (line == "4") {
+                    Test4.Run();
+                }
             }
             
 
